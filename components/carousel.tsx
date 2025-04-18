@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Movie } from "@/app/api/wookie";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -22,21 +23,24 @@ export const Carousel: React.FC<CarouselProps> = ({ genre, movieList }) => {
       <h2>{genre}</h2>
       <div className="relative">
         <div
-          className="flex overflow-x-auto"
+          className="flex space-x-4 overflow-x-auto"
           ref={containerRef}
           style={{ scrollbarWidth: "none" }}
         >
           {movieList
             ?.filter((movie) => movie.genres.includes(genre))
             ?.map((movie) => (
-              <Image
-                key={movie.id}
-                src={movie.poster}
-                alt={movie.title}
-                width={200}
-                height={300}
-                className="flex-shrink-0 mr-4"
-              />
+              <Link href={`/movie/${movie.slug}`} key={movie.slug}>
+                <div className="w-[200px]">
+                  <Image
+                    src={movie.poster}
+                    alt={movie.title}
+                    width={200}
+                    height={300}
+                    className="rounded-lg cursor-pointer"
+                  />
+                </div>
+              </Link>
             ))}
         </div>
 

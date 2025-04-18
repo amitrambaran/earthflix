@@ -4,7 +4,7 @@ const Search = () => {
       <h1 className="text-2xl font-bold mb-4">Search for Earthtainment</h1>
       <input
         type="text"
-        placeholder="Movies, TV shows..."
+        placeholder="Alien vs. Predator..."
         className="p-2 border border-gray-300 rounded"
       />
     </div>
