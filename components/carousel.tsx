@@ -23,15 +23,19 @@ export const Carousel: React.FC<CarouselProps> = ({ genre, movieList }) => {
       <h2 className="text-xl font-semibold">{genre}</h2>
       <div className="relative">
         <div
-          className="flex space-x-4 overflow-x-auto"
+          className="flex space-x-4 overflow-x-auto snap-x snap-mandatory"
           ref={containerRef}
-          style={{ scrollbarWidth: "none" }}
+          style={{
+            scrollbarWidth: "none",
+            WebkitOverflowScrolling: "touch",
+            overscrollBehaviorX: "contain",
+          }}
         >
           {movieList
             ?.filter((movie) => movie.genres.includes(genre))
             ?.map((movie) => (
               <Link href={`/movie/${movie.slug}`} key={movie.slug}>
-                <div className="w-[200px]">
+                <div className="w-[200px] snap-start">
                   <Image
                     src={movie.poster}
                     alt={movie.title}
