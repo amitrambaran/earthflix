@@ -1,5 +1,5 @@
-import { getAllMovies } from "@/app/api/wookie";
 import Image from "next/image";
+import { getAllMovies } from "@/app/api/wookie";
 import { notFound } from "next/navigation";
 import { FiStar } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
@@ -70,7 +70,7 @@ export default async function MoviePage({
                 <span>{movie.title}</span>
                 <span className="flex items-center gap-1 whitespace-nowrap">
                   ({movie.imdb_rating})
-                  <FaImdb className="text-yellow-300" size={24} />
+                  <FaImdb className="text-yellow-400" size={24} />
                 </span>
               </div>
               <div className="flex items-center gap-2 mt-2">
