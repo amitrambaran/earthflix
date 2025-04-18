@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { getAllMovies } from "@/app/api/wookie";
 import { notFound } from "next/navigation";
+import type { NextPage } from "next";
 import { FiStar } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
 import BookmarkButton from "@/components/bookmark";
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
+interface MoviePageProps {
+  params: { slug: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -30,7 +29,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-async function MoviePage({ params }: PageProps) {
+const MoviePage: NextPage<MoviePageProps> = async ({ params }) => {
   const movies = await getAllMovies();
   const movie =
     movies?.find((movie) => movie.slug === params.slug) ?? notFound();
@@ -90,6 +89,6 @@ async function MoviePage({ params }: PageProps) {
       </div>
     </>
   );
-}
+};
 
 export default MoviePage;
