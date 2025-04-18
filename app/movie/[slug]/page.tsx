@@ -1,38 +1,23 @@
 import Image from "next/image";
 import { getAllMovies } from "@/app/api/wookie";
 import { notFound } from "next/navigation";
-import type { NextPage } from "next";
 import { FiStar } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
 import BookmarkButton from "@/components/bookmark";
 
-interface MoviePageProps {
-  params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-function StarRating({ rating }: { rating: number }) {
-  const stars = Math.round((rating / 10) * 5);
-
-  return (
-    <div className="flex gap-1">
-      {[...Array(5)].map((_, index) => (
-        <FiStar
-          key={index}
-          className={
-            index < stars ? "text-yellow-400 fill-yellow-400" : "text-white"
-          }
-          size={20}
-        />
-      ))}
-    </div>
-  );
-}
-
-const MoviePage: NextPage<MoviePageProps> = async ({ params }) => {
+export const generateStaticParams = async () => {
   const movies = await getAllMovies();
-  const movie =
-    movies?.find((movie) => movie.slug === params.slug) ?? notFound();
+  return movies.map((movie) => ({
+    slug: movie.slug,
+  }));
+};
+
+export type ParamsType = Promise<{ slug: string }>;
+
+async function MoviePage(props: { params: ParamsType }) {
+  const { slug } = await props.params;
+  const movies = await getAllMovies();
+  const movie = movies?.find((movie) => movie.slug === slug) ?? notFound();
 
   return (
     <>
@@ -89,6 +74,24 @@ const MoviePage: NextPage<MoviePageProps> = async ({ params }) => {
       </div>
     </>
   );
-};
+}
 
 export default MoviePage;
+
+function StarRating({ rating }: { rating: number }) {
+  const stars = Math.round((rating / 10) * 5);
+
+  return (
+    <div className="flex gap-1">
+      {[...Array(5)].map((_, index) => (
+        <FiStar
+          key={index}
+          className={
+            index < stars ? "text-yellow-400 fill-yellow-400" : "text-white"
+          }
+          size={20}
+        />
+      ))}
+    </div>
+  );
+}
