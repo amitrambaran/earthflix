@@ -12,7 +12,7 @@ function Search() {
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = e.currentTarget.query.value as string;
+    const query = e.currentTarget.query?.value as string;
 
     setIsLoading(true);
     setHasSearched(true);

@@ -20,7 +20,7 @@ export const Carousel: React.FC<CarouselProps> = ({ genre, movieList }) => {
 
   return (
     <section className="space-y-2 p-4" key={genre}>
-      <h2>{genre}</h2>
+      <h2 className="text-xl font-semibold">{genre}</h2>
       <div className="relative">
         <div
           className="flex space-x-4 overflow-x-auto"

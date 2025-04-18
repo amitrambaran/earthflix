@@ -5,6 +5,13 @@ import { FiStar } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
 import BookmarkButton from "@/components/bookmark";
 
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
 function StarRating({ rating }: { rating: number }) {
   const stars = Math.round((rating / 10) * 5);
 
@@ -23,11 +30,7 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-export default async function MoviePage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+async function MoviePage({ params }: PageProps) {
   const movies = await getAllMovies();
   const movie =
     movies?.find((movie) => movie.slug === params.slug) ?? notFound();
@@ -88,3 +91,5 @@ export default async function MoviePage({
     </>
   );
 }
+
+export default MoviePage;
