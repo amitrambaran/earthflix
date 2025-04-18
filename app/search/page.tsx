@@ -48,7 +48,7 @@ function Search() {
         <p className="text-center">No results found.</p>
       ) : (
         results.length > 0 && (
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center mb-20">
             {results.map((movie) => (
               <Link href={`/movie/${movie.slug}`} key={movie.id}>
                 <Image

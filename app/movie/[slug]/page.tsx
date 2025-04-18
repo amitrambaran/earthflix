@@ -26,7 +26,7 @@ async function MoviePage(props: { params: ParamsType }) {
           src={movie.backdrop}
           alt={movie.title}
           fill
-          className="object-cover"
+          className="object-cover opacity-80"
           priority={false}
         />
       </div>
