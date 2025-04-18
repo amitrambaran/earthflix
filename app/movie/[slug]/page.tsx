@@ -3,6 +3,7 @@ import { getAllMovies } from "@/app/api/wookie";
 import { notFound } from "next/navigation";
 import { FiStar } from "react-icons/fi";
 import { FaImdb } from "react-icons/fa";
+import BookmarkButton from "@/components/bookmark";
 
 function StarRating({ rating }: { rating: number }) {
   const stars = Math.round((rating / 10) * 5);
@@ -75,6 +76,7 @@ export default async function MoviePage({
               </div>
               <div className="flex items-center gap-2 mt-2">
                 <StarRating rating={movie.imdb_rating} />
+                <BookmarkButton movieId={movie.id} />
               </div>
             </h1>
           </aside>
