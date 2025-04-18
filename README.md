@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Potential areas for future improvements
 
-- performance optimizations (lazy loading, memoization, more granular components
+- performance optimizations (lazy loading, memoization, more granular components)
 - hiding/disabling the left/right arrows when a user can't scroll anymore
 - refining responsive styling
 - more robust bookmarking system (eg. saving a list of bookmarks to a server)
