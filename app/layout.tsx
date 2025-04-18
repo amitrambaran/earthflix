@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "🌍 EarthFlix",
+  title: "EarthFlix",
   description: "Earth's finest selection of movies",
+  icons: {
+    icon: "https://cdn-icons-png.freepik.com/512/2072/2072130.png",
+  },
 };
 
 export default function RootLayout({
