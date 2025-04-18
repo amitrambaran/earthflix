@@ -1,0 +1,61 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import { Movie } from "@/app/api/wookie";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+
+interface CarouselProps {
+  genre: string;
+  movieList: Movie[];
+}
+
+export const Carousel: React.FC<CarouselProps> = ({ genre, movieList }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (amount: number) => {
+    containerRef.current?.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+  return (
+    <section className="space-y-2 p-4" key={genre}>
+      <h2>{genre}</h2>
+      <div className="relative">
+        <div
+          className="flex overflow-x-auto"
+          ref={containerRef}
+          style={{ scrollbarWidth: "none" }}
+        >
+          {movieList
+            ?.filter((movie) => movie.genres.includes(genre))
+            ?.map((movie) => (
+              <Image
+                key={movie.id}
+                src={movie.poster}
+                alt={movie.title}
+                width={200}
+                height={300}
+                className="flex-shrink-0 mr-4"
+              />
+            ))}
+        </div>
+
+        <button
+          onClick={() => scroll(-400)}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/70 rounded-full p-2"
+        >
+          <FiChevronLeft size={24} />
+        </button>
+
+        <button
+          onClick={() => scroll(400)}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/70 rounded-full p-2"
+        >
+          <FiChevronRight size={24} />
+        </button>
+      </div>
+    </section>
+  );
+};
+
+export default Carousel;
