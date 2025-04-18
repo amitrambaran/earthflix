@@ -9,12 +9,12 @@ const Home = async () => {
   console.log(movieList);
 
   return (
-    <main>
+    <>
       <h1 className="flex justify-center p-8 text-3xl font-bold">WookieFlix</h1>
       {uniqueGenreList?.map((genre) => {
         return <Carousel key={genre} genre={genre} movieList={movieList} />;
       })}
-    </main>
+    </>
   );
 };
 
