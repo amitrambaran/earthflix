@@ -14,8 +14,6 @@ function Search() {
     e.preventDefault();
     const query = e.currentTarget.query.value as string;
 
-    console.log(query);
-
     setIsLoading(true);
     setHasSearched(true);
     try {

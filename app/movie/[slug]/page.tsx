@@ -29,7 +29,6 @@ export default async function MoviePage({
   params: { slug: string };
 }) {
   const movies = await getAllMovies();
-  console.log(params, movies);
   const movie =
     movies?.find((movie) => movie.slug === params.slug) ?? notFound();
 

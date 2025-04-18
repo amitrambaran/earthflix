@@ -5,8 +5,6 @@ const Home = async () => {
   const movieList = await getAllMovies();
   const genreList = movieList.flatMap((movie) => movie.genres);
   const uniqueGenreList = [...new Set<string>(genreList)];
-  console.log(uniqueGenreList);
-  console.log(movieList);
 
   return (
     <>
