@@ -9,10 +9,10 @@ const Navbar = () => {
           <FiHome size={24} />
           Home
         </Link>
-        <a href="/search" className="flex flex-col items-center text-white">
+        <Link href="/search" className="flex flex-col items-center text-white">
           <FiSearch size={24} />
           Search
-        </a>
+        </Link>
       </div>
     </nav>
   );
