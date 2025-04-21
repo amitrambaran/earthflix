@@ -27,7 +27,7 @@ async function MoviePage(props: { params: ParamsType }) {
           alt={movie.title}
           fill
           className="object-cover opacity-80"
-          priority={false}
+          priority={true}
         />
       </div>
 
